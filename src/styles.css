@@ -1,1 +1,367 @@
-/* You can add global styles to this file, and also import other style files */
+/* === VERZA GLOBAL THEME SYSTEM === */
+
+:root {
+  /* ===== DARK MODE ===== */
+  --bg-color: #0b0b0b;
+  --surface-color: #1a1a1a;
+  --text-color: #f1f1f1;
+  --muted-color: #a1a1a1;
+  --accent-color: #6c63ff; /* Electric Violet */
+  --link-color: #3399ff; /* Standard clickable link blue */
+  --navbar-bg: rgba(20, 20, 20, 0.95);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ===== LIGHT MODE ===== */
+:root.light-mode {
+  --bg-color: #f8f9fa;
+  --surface-color: #ffffff;
+  --text-color: #1a1a1a;
+  --muted-color: #555555;
+  --accent-color: #4b0082; /* Royal Indigo */
+  --link-color: #0066cc;
+  --navbar-bg: rgba(255, 255, 255, 0.98);
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* === BASE STYLES === */
+html,
+body {
+  height: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.navbar {
+  background: var(--navbar-bg) !important;
+  transition: background-color 0.4s ease;
+}
+
+.navbar a,
+.navbar .nav-link,
+.navbar-brand {
+  color: var(--text-color) !important;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar .nav-link:hover {
+  color: var(--accent-color) !important;
+}
+
+/* === Buttons === */
+.btn-verza {
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+.btn-verza:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+}
+
+.btn-outline-light {
+  color: var(--text-color);
+  border-color: var(--muted-color);
+}
+.btn-outline-light:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+/* === Cards === */
+.card {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  border-radius: 12px;
+  transition: background 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* === Inputs === */
+input,
+.form-control {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+input:focus,
+.form-control:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* === Toasts === */
+.toast {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+}
+
+/* === Global Transition for all === */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+/* === Responsive tweaks === */
+@media (max-width: 992px) {
+  .navbar-brand span {
+    font-size: 1rem;
+  }
+}
+
+/* === THEME FIXES FOR INPUTS, LABELS & PLACEHOLDERS === */
+label,
+.form-label {
+  color: var(--text-color) !important;
+  transition: color 0.3s ease;
+}
+
+input,
+input.form-control,
+textarea,
+select {
+  background: var(--surface-color) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color) !important;
+  transition: all 0.3s ease;
+  caret-color: var(--accent-color);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0.3rem var(--accent-color);
+  background-color: var(--surface-color) !important;
+  color: var(--text-color) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted-color) !important;
+  opacity: 0.8;
+}
+
+/* Disable autocomplete ugly colors */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: var(--surface-color) !important;
+  -webkit-text-fill-color: var(--text-color) !important;
+  box-shadow: 0 0 0 1000px var(--surface-color) inset !important;
+}
+
+/* Buttons near inputs */
+button.btn,
+.btn-outline-dark {
+  color: var(--text-color) !important;
+  border-color: var(--muted-color) !important;
+}
+button.btn:hover {
+  color: #fff !important;
+  background: var(--accent-color) !important;
+}
+
+/* Alerts on login page */
+.alert {
+  background: var(--surface-color) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* === LOGIN PAGE SPECIFIC === */
+.login-page {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.login-card {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.left-panel {
+  background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+  color: #fff;
+}
+
+/* === LOGIN PAGE OVERRIDES === */
+app-login,
+app-login * {
+  color: var(--text-color) !important;
+  background-color: transparent !important;
+  transition: all 0.3s ease;
+}
+
+app-login .login-card {
+  background: var(--surface-color) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--card-shadow);
+}
+
+/* Focused Input */
+app-login input.form-control {
+  background: var(--surface-color) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color) !important;
+}
+app-login input.form-control:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0.25rem var(--accent-color) !important;
+}
+
+/* Placeholders */
+app-login input::placeholder {
+  color: var(--muted-color) !important;
+  opacity: 0.8 !important;
+}
+
+/* Headings & muted */
+app-login h4.fw-semibold {
+  color: var(--text-color) !important;
+  opacity: 1 !important;
+}
+app-login p.text-muted.small {
+  color: var(--muted-color) !important;
+  opacity: 0.9 !important;
+}
+
+/* “Terms & Conditions” link */
+app-login a.text-decoration-none {
+  color: var(--link-color) !important;
+  font-weight: 500;
+}
+app-login a.text-decoration-none:hover {
+  color: var(--accent-color) !important;
+  text-decoration: underline;
+}
+
+/* Buttons */
+app-login .btn {
+  border-radius: 10px !important;
+}
+app-login .btn-primary {
+  background: var(--accent-color) !important;
+  border: none !important;
+}
+app-login .btn-outline-secondary {
+  color: var(--text-color) !important;
+  border-color: var(--muted-color) !important;
+}
+app-login .btn-outline-secondary:hover {
+  background: var(--accent-color) !important;
+  color: #fff !important;
+}
+
+/* Social buttons outline */
+app-login .btn-outline-light {
+  color: var(--text-color) !important;
+  border-color: var(--muted-color) !important;
+}
+app-login .btn-outline-light:hover {
+  background: var(--accent-color) !important;
+  color: #fff !important;
+}
+
+/* Modal */
+app-login .modal-content {
+  background: var(--surface-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* === MUTED TEXT FIXES === */
+.text-muted,
+.small.text-muted,
+p.text-muted,
+span.text-muted,
+label.text-muted {
+  color: var(--muted-color) !important;
+  opacity: 0.9 !important;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.card p,
+.card .product-description,
+.card small {
+  color: var(--muted-color) !important;
+  opacity: 0.85;
+  transition: color 0.3s ease;
+}
+
+.card h5,
+.card .price,
+.card .fw-semibold {
+  color: var(--text-color) !important;
+}
+
+/* Left panel text */
+.left-panel h1,
+.left-panel p {
+  color: #fff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Transitions for all readable text */
+body,
+.card,
+.login-card,
+p,
+label,
+span,
+h3,
+h4,
+h5 {
+  transition: color 0.3s ease, background 0.3s ease;
+}/* === Verza Modal Accent === */
+.bg-verza {
+  background: var(--accent-color) !important;
+}
+
+#editNameModal .modal-content {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}/* === Inline Name Edit Section === */
+app-login h5 {
+  color: var(--text-color) !important;
+}
+
+app-login input[type="text"] {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+app-login input[type="text"]:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0.3rem var(--accent-color);
+}

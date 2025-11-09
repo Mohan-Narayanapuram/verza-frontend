@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">❤️ Wishlist</h2>
+
+  <div *ngIf="productService.getWishlist().length === 0" class="alert alert-info text-center">
+    Your wishlist is empty.
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 mb-4" *ngFor="let product of productService.getWishlist()">
+      <div class="card h-100 shadow-sm">
+        <img [src]="product.imageUrl" class="card-img-top" [alt]="product.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="text-primary fw-bold">₹{{ product.price }}</p>
+          <p>{{ product.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

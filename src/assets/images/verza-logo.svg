@@ -1,0 +1,11 @@
+<svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="verza-noir-gradient" x1="0" y1="0" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#007AFF"/>
+      <stop offset="100%" stop-color="#00FF9C"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="45" font-family="Poppins, sans-serif" font-size="42" font-weight="600" fill="url(#verza-noir-gradient)">
+    VERZA
+  </text>
+</svg>

@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <div class="d-flex gap-2 mb-3">
+    <input class="form-control" placeholder="Search products..." [(ngModel)]="query" (input)="search()">
+    <input class="form-control" type="number" placeholder="Min price" [(ngModel)]="minPrice" (input)="search()">
+    <input class="form-control" type="number" placeholder="Max price" [(ngModel)]="maxPrice" (input)="search()">
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 mb-4" *ngFor="let product of filtered">
+      <div class="card h-100">
+        <img [src]="product.imageUrl" class="card-img-top" [alt]="product.name" style="height:180px; object-fit:cover;">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="text-primary mb-1">₹{{ product.price }}</p>
+          <p class="mb-2 small text-muted">{{ product.description }}</p>
+          <div class="mt-auto">
+            <button class="btn btn-sm btn-success w-100 mb-2" (click)="addToCart(product)">
+              <i class="bi bi-cart-plus"></i> Add to cart
+            </button>
+            <button class="btn btn-sm btn-outline-secondary w-100" (click)="addToWishlist(product)">
+              <i class="bi bi-heart"></i> Add to wishlist
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showToast" class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast show text-bg-primary">
+      <div class="toast-body">{{ toastMessage }}</div>
+    </div>
+  </div>
+</div>
