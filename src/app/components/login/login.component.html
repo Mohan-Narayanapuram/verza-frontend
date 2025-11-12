@@ -1,43 +1,24 @@
 <div class="login-page d-flex flex-column flex-lg-row vh-100 text-light">
   <!-- Left Brand Section -->
   <div class="left-panel d-none d-lg-flex flex-column justify-content-center align-items-center">
-    <img
-      src="assets/images/verza-logo.svg"
-      alt="Verza Logo"
-      class="mb-4"
-      style="height: 70px;"
-    />
+    <img src="assets/images/verza-logo.svg" alt="Verza Logo" class="mb-4" style="height: 70px;" />
     <h1 class="display-5 fw-bold mb-3">Welcome to Verza</h1>
-    <p class="lead fw-light text-muted mb-4">
-      Where minimal meets luxury. Experience redefined shopping.
-    </p>
-    <img
-      src="assets/images/ecommerce-hero.svg"
-      alt="Shopping Illustration"
-      class="img-fluid"
-      style="max-height: 320px"
-    />
+    <p class="lead fw-light text-muted mb-4">Where minimal meets luxury. Experience redefined shopping.</p>
+    <img src="assets/images/ecommerce-hero.svg" alt="Shopping Illustration" class="img-fluid" style="max-height: 320px" />
   </div>
 
   <!-- Right Login Panel -->
   <div class="right-panel d-flex justify-content-center align-items-center w-100">
     <div class="login-card shadow-lg p-4 rounded-4">
       <div class="text-center mb-4">
-        <img
-          src="assets/images/verza-logo.svg"
-          alt="Verza Logo"
-          style="height: 60px;"
-          class="mb-3"
-        />
+        <img src="assets/images/verza-logo.svg" alt="Verza Logo" style="height: 60px;" class="mb-3" />
         <h4 class="fw-semibold text-light">Sign in to Verza</h4>
         <p class="text-muted small mb-0">Shop smart. Live better.</p>
       </div>
 
       <!-- Alert -->
       <div *ngIf="showAlert" class="mb-3">
-        <div
-          class="alert alert-{{ alertType }} text-center fw-semibold py-2 rounded-3 shadow-sm mb-0"
-        >
+        <div class="alert alert-{{ alertType }} text-center fw-semibold py-2 rounded-3 shadow-sm mb-0">
           {{ alertMessage }}
         </div>
       </div>
@@ -51,10 +32,7 @@
           class="form-control mb-3"
           placeholder="you@example.com"
         />
-        <button
-          class="btn btn-verza w-100 fw-semibold py-2"
-          (click)="sendOtp()"
-        >
+        <button class="btn btn-verza w-100 fw-semibold py-2" (click)="sendOtp()">
           <i class="bi bi-envelope-check me-2"></i> Send OTP
         </button>
       </div>
@@ -68,16 +46,10 @@
           class="form-control text-center fw-semibold mb-3"
           placeholder="6-digit OTP"
         />
-        <button
-          class="btn btn-success w-100 fw-semibold py-2 mb-2"
-          (click)="verifyOtp()"
-        >
+        <button class="btn btn-success w-100 fw-semibold py-2 mb-2" (click)="verifyOtp()">
           <i class="bi bi-shield-check me-2"></i> Verify & Login
         </button>
-        <button
-          class="btn btn-outline-secondary w-100 fw-semibold py-2"
-          (click)="step = 1; otp = ''"
-        >
+        <button class="btn btn-outline-secondary w-100 fw-semibold py-2" (click)="step = 1; otp = ''">
           <i class="bi bi-arrow-left-circle me-2"></i> Change Email
         </button>
       </div>
@@ -86,10 +58,7 @@
       <div class="text-center my-4 text-muted small">— or continue with —</div>
 
       <div class="d-flex justify-content-center gap-3 mb-3">
-        <button
-          class="btn btn-outline-light rounded-circle p-2"
-          (click)="signInWithGoogle()"
-        >
+        <button class="btn btn-outline-light rounded-circle p-2" (click)="signInWithGoogle()">
           <i class="bi bi-google fs-5"></i>
         </button>
         <button class="btn btn-outline-light rounded-circle p-2 disabled">
@@ -100,10 +69,18 @@
         </button>
       </div>
 
-      <p class="text-center small text-muted mb-0">
+      <p class="text-center small text-muted mb-3">
         By signing in, you agree to Verza’s
         <a href="#" class="text-decoration-none">Terms & Conditions</a>.
       </p>
+
+      <!-- 🔹 Skip Button -->
+      <div class="text-center mt-3">
+        <button class="btn btn-outline-skip px-4 py-2 fw-semibold" (click)="continueAsGuest()">
+          <i class="bi bi-arrow-right-circle me-2"></i> Skip for now
+        </button>
+        <p class="small text-muted mt-2 mb-0">Continue browsing as guest</p>
+      </div>
     </div>
   </div>
 </div>

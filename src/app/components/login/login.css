@@ -1,0 +1,13 @@
+.btn-outline-skip {
+  border: 2px solid var(--accent-color) !important;
+  color: var(--accent-color) !important;
+  background: transparent !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.btn-outline-skip:hover {
+  background: var(--accent-color) !important;
+  color: #fff !important;
+  box-shadow: 0 0 12px rgba(108, 99, 255, 0.5);
+  transform: translateY(-2px);
+}

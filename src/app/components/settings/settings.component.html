@@ -1,0 +1,97 @@
+<div class="container py-5 settings-container">
+  <div class="card settings-card mx-auto p-4 shadow-lg rounded-4 animate__animated animate__fadeIn">
+    <!-- 🔹 Profile Header -->
+    <div class="text-center mb-4">
+      <div class="position-relative d-inline-block">
+        <img [src]="userPhoto" alt="Profile" class="profile-pic mb-3" />
+        <button class="change-photo-btn" title="Change Photo">
+          <i class="bi bi-camera-fill"></i>
+        </button>
+      </div>
+      <h4 class="fw-semibold">{{ userName }}</h4>
+      <p class="text-muted small mb-1">{{ userEmail }}</p>
+      <p class="text-muted small">Member since 2024</p>
+    </div>
+
+    <hr />
+
+    <!-- 🔹 Account Information -->
+    <div class="mb-4">
+      <h5 class="fw-semibold mb-3"><i class="bi bi-person-lines-fill me-2"></i>Account Information</h5>
+
+      <label class="form-label fw-semibold">Display Name</label>
+      <input type="text" class="form-control mb-3" [(ngModel)]="userName" placeholder="Enter your preferred name" />
+
+      <label class="form-label fw-semibold">Mobile Number</label>
+      <input
+        type="tel"
+        class="form-control mb-3"
+        [(ngModel)]="userPhone"
+        placeholder="Enter 10-digit mobile number"
+        maxlength="10"
+      />
+
+      <label class="form-label fw-semibold">Gender</label>
+      <select class="form-select mb-3" [(ngModel)]="userGender">
+        <option value="" disabled selected>Select gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label class="form-label fw-semibold">Date of Birth</label>
+      <input type="date" class="form-control" [(ngModel)]="userDob" />
+    </div>
+
+    <hr />
+
+<!-- 🔹 Preferences -->
+<div class="mb-4">
+  <h5 class="fw-semibold mb-3">
+    <i class="bi bi-palette me-2"></i> Theme Preferences
+  </h5>
+
+  <div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+    <button
+      class="verza-theme-btn"
+      [class.active]="themeMode === 'light'"
+      (click)="setTheme('light')"
+      type="button"
+    >
+      <i class="bi bi-brightness-high-fill me-2"></i> Light Mode
+    </button>
+
+    <button
+      class="verza-theme-btn"
+      [class.active]="themeMode === 'dark'"
+      (click)="setTheme('dark')"
+      type="button"
+    >
+      <i class="bi bi-moon-stars-fill me-2"></i> Dark Mode
+    </button>
+  </div>
+
+  <!-- ✅ Clean Notification Row -->
+  <div class="notification-row d-flex justify-content-between align-items-center px-3 py-2 rounded-3">
+    <label class="form-check-label fw-semibold m-0">
+      <i class="bi bi-bell-fill me-2 text-accent"></i> Enable Notifications
+    </label>
+    <input class="verza-switch" type="checkbox" id="notifSwitch" checked />
+  </div>
+</div>
+    <!-- 🔹 Actions -->
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <button class="btn btn-verza px-4 fw-semibold" (click)="saveProfile()">
+        <i class="bi bi-save2 me-2"></i> Save Changes
+      </button>
+      <button class="btn btn-outline-danger px-4 fw-semibold" (click)="logout()">
+        <i class="bi bi-box-arrow-right me-2"></i> Logout
+      </button>
+    </div>
+  </div>
+
+  <!-- 🔹 Toast -->
+  <div *ngIf="showToast" class="verza-toast" [class.success]="toastType === 'success'" [class.error]="toastType === 'error'">
+    {{ toastMessage }}
+  </div>
+</div>

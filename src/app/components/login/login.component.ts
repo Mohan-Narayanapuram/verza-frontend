@@ -22,6 +22,16 @@ export class LoginComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  // === Skip / Guest Login ===
+  continueAsGuest() {
+    localStorage.setItem('userEmail', 'guest@verza.store');
+    localStorage.setItem('userName', 'Guest User');
+    localStorage.setItem('userPhoto', '');
+    this.show('Welcome to Verza Store, Guest!', 'success');
+    setTimeout(() => this.router.navigate(['/home']), 1200);
+  }
+
+  // === OTP Login ===
   sendOtp() {
     if (!this.email) {
       this.show('Please enter a valid email', 'danger');
@@ -47,7 +57,7 @@ export class LoginComponent {
         if (res.status === 'success') {
           localStorage.setItem('userEmail', this.email);
           this.show('Login successful! Redirecting...', 'success');
-          setTimeout(() => this.router.navigate(['/']), 1000);
+          setTimeout(() => this.router.navigate(['/home']), 1000);
         } else {
           this.show('Invalid OTP. Try again.', 'danger');
         }
@@ -56,6 +66,7 @@ export class LoginComponent {
     });
   }
 
+  // === Google Login ===
   async signInWithGoogle() {
     try {
       const provider = new GoogleAuthProvider();
@@ -68,8 +79,8 @@ export class LoginComponent {
         localStorage.setItem('userName', user.displayName || 'Verza User');
         localStorage.setItem('userPhoto', user.photoURL || '');
 
-        this.show(`Welcome to Verza Store, ${user.displayName || 'Guest'}!`, 'success');
-        setTimeout(() => this.router.navigate(['/']), 1000);
+        this.show(`Welcome to Verza Store, ${user.displayName || 'User'}!`, 'success');
+        setTimeout(() => this.router.navigate(['/home']), 1000);
       }
     } catch (error) {
       console.error(error);
@@ -77,6 +88,7 @@ export class LoginComponent {
     }
   }
 
+  // === Alert Handler ===
   show(msg: string, type: string) {
     this.alertMessage = msg;
     this.alertType = type;

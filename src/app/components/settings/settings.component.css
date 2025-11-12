@@ -1,0 +1,200 @@
+/* === Profile Header === */
+.position-relative .change-photo-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.4);
+}
+.position-relative .change-photo-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(108, 99, 255, 0.6);
+}
+
+/* === Section Headers === */
+.settings-card h5 {
+  color: var(--accent-color);
+  border-left: 4px solid var(--accent-color);
+  padding-left: 10px;
+  margin-bottom: 1rem;
+}
+
+/* === Dropdown & Form select === */
+select.form-select {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  transition: 0.3s ease;
+}
+select.form-select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0.25rem var(--accent-color);
+}
+
+/* === Card Animation === */
+.settings-card {
+  animation: slideUp 0.6s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Save Changes Button (Verza Style) === */
+.btn-verza {
+  background: var(--accent-color) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-verza:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.6);
+  opacity: 0.95;
+}
+
+/* === Logout Button === */
+.btn-outline-danger {
+  background: transparent !important;
+  color: #dc3545 !important;
+  border: 1px solid #dc3545 !important;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.btn-outline-danger:hover {
+  background: #dc3545 !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(220, 53, 69, 0.5);
+}
+
+/* === THEME OPTIONS (VERZA STYLE) === */
+.verza-theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  background: var(--surface-color);
+  color: var(--text-color);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.verza-theme-btn:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(108, 99, 255, 0.5);
+}
+
+.verza-theme-btn.active {
+  border-color: var(--accent-color);
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(108, 99, 255, 0.05));
+  color: var(--accent-color);
+  box-shadow: 0 0 18px rgba(108, 99, 255, 0.4);
+}
+
+/* Remove unwanted dark/light squares */
+.theme-preview {
+  display: none;
+}
+
+/* === Notification Row === */
+.notification-row {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+.notification-row:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(108, 99, 255, 0.4);
+}
+.text-accent {
+  color: var(--accent-color);
+}
+
+/* === Verza Switch (Purple-Themed) === */
+.verza-switch {
+  appearance: none;
+  width: 52px;
+  height: 28px;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(108, 99, 255, 0.05));
+  border: 2px solid rgba(108, 99, 255, 0.5);
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.3);
+}
+.verza-switch::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  top: 1.5px;
+  left: 3px;
+  background: rgba(108, 99, 255, 0.8);
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+  transition: all 0.3s ease;
+}
+.verza-switch:hover {
+  box-shadow: 0 0 14px rgba(108, 99, 255, 0.6);
+  border-color: var(--accent-color);
+}
+.verza-switch:checked {
+  background: linear-gradient(135deg, #6c63ff, #7b2cbf);
+  border-color: #6c63ff;
+  box-shadow: 0 0 18px rgba(108, 99, 255, 0.6);
+}
+.verza-switch:checked::before {
+  transform: translateX(24px);
+  background: #a890ff;
+  box-shadow: 0 0 12px rgba(108, 99, 255, 0.8);
+}
+
+/* === Toast Styling === */
+.verza-toast {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  animation: fadeInUp 0.4s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+.verza-toast.success {
+  background: rgba(40, 167, 69, 0.9);
+  color: white;
+  border-left: 4px solid #28a745;
+}
+.verza-toast.error {
+  background: rgba(220, 53, 69, 0.9);
+  color: white;
+  border-left: 4px solid #dc3545;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

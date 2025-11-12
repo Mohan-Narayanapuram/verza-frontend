@@ -6,26 +6,125 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0E0E0E" />
-    <meta name="description" content="Verza — Minimal, intelligent, and luxurious e-commerce." />
+    <meta
+      name="description"
+      content="Verza — Minimal, intelligent, and luxurious e-commerce."
+    />
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
 
     <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
     <!-- Animate.css -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
 
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/images/verza-logo.svg" />
   </head>
 
   <body>
     <app-root></app-root>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Bundle JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function initVerzaDropdowns() {
+        const toggles = document.querySelectorAll('[data-bs-toggle="dropdown"]');
+        if (!window.bootstrap || toggles.length === 0) return;
+
+        toggles.forEach(btn => {
+          if (btn.dataset.dropdownInit === 'true') return;
+          btn.dataset.dropdownInit = 'true';
+
+          const dropdown = new window.bootstrap.Dropdown(btn, { autoClose: false });
+          const menu = btn.parentElement.querySelector('.dropdown-menu');
+          let lockedOpen = false;
+
+          // 🖱️ Hover → open visually
+          btn.addEventListener('mouseenter', () => {
+            if (!lockedOpen) {
+              btn.classList.add('show');
+              menu.classList.add('show');
+              menu.style.display = 'block';
+            }
+          });
+
+          // 🖱️ Hover out → close smoothly
+          btn.parentElement.addEventListener('mouseleave', () => {
+            if (!lockedOpen) {
+              menu.classList.remove('show');
+              btn.classList.remove('show');
+              setTimeout(() => {
+                if (!menu.classList.contains('show')) menu.style.display = 'none';
+              }, 180);
+            }
+          });
+
+          // 🖱️ Click → toggle lock open
+          btn.addEventListener('click', e => {
+            e.preventDefault();
+            lockedOpen = !lockedOpen;
+
+            if (lockedOpen) {
+              btn.classList.add('show');
+              menu.classList.add('show');
+              menu.style.display = 'block';
+            } else {
+              menu.classList.remove('show');
+              btn.classList.remove('show');
+              setTimeout(() => {
+                if (!menu.classList.contains('show')) menu.style.display = 'none';
+              }, 180);
+            }
+          });
+        });
+      }
+
+      // 🔁 Reinitialize after Angular updates
+      const observer = new MutationObserver(() => {
+        if (document.querySelector('[data-bs-toggle="dropdown"]')) {
+          setTimeout(initVerzaDropdowns, 100);
+        }
+      });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const root = document.querySelector('app-root');
+        if (root) observer.observe(root, { childList: true, subtree: true });
+        setTimeout(initVerzaDropdowns, 800);
+      });
+
+      // 🖱️ Click outside → auto close dropdown
+      document.addEventListener('click', event => {
+        const openMenu = document.querySelector('.dropdown-menu.show');
+        const toggleBtn = document.querySelector('[data-bs-toggle="dropdown"].show');
+        if (openMenu && !openMenu.contains(event.target) && !toggleBtn?.contains(event.target)) {
+          openMenu.classList.remove('show');
+          toggleBtn?.classList.remove('show');
+          openMenu.style.display = 'none';
+        }
+      });
+    </script>
   </body>
 </html>
